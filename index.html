@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小企鵝智造實驗室 | Penguin Lab</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 引入 Google Fonts: Zen Maru Gothic (圓體) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 引入 FontAwesome 圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: #e0f2fe; /* 淺藍色背景 */
+            background-image: radial-gradient(#bae6fd 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* 浮動動畫 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-float-delay {
+            animation: float 3.5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        /* 較慢的浮動，給卡片使用，避免視覺太混亂 */
+        .animate-float-slow {
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        /* 卡片懸停效果 (外層容器負責位移，內層負責浮動動畫) */
+        .app-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px) scale(1.02); /* 滑鼠移上去時再往上浮一點 */
+            filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+        }
+
+        /* 雲朵裝飾 */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.6;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center py-10 px-4 relative overflow-hidden text-slate-700">
+
+    <!-- 背景裝飾雲朵 -->
+    <div class="cloud w-32 h-12 top-10 left-10 animate-float"></div>
+    <div class="cloud w-48 h-16 bottom-20 right-10 animate-float-delay"></div>
+    <div class="cloud w-24 h-10 top-1/2 left-5 opacity-40"></div>
+
+    <!-- 主要容器 -->
+    <main class="w-full max-w-4xl z-10">
+        
+        <!-- 標題區 -->
+        <header class="text-center mb-12 animate-float">
+            <!-- 使用者自訂圖片區塊 -->
+            <!-- 注意：請確保 'icon.png' 檔案與此 html 放在同一個資料夾 -->
+            <div class="w-48 h-48 mx-auto mb-4 relative drop-shadow-xl flex items-center justify-center">
+                <img 
+                    src="icon.png" 
+                    alt="小企鵝" 
+                    class="w-full h-full object-contain"
+                    onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/4149/4149667.png'; this.title='找不到圖片，請確認檔名是否正確';"
+                >
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-sky-600 mb-2 tracking-wide drop-shadow-sm">小企鵝智造實驗室</h1>
+            <p class="text-slate-500 text-lg">Penguin Manufacturing Lab</p>
+        </header>
+
+        <!-- 應用程式網格區 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl mx-auto">
+
+            <!-- 項目 1: 停車雷達 -->
+            <!-- 外層負責點擊連結與 Hover 效果 -->
+            <a href="https://parking-delta-jet.vercel.app/" target="_blank" class="app-card group block">
+                <!-- 內層負責持續的浮動動畫 (animate-float-delay) -->
+                <div class="bg-white rounded-3xl p-6 border-4 border-white shadow-lg h-full flex items-center hover:border-sky-200 transition-colors animate-float-delay">
+                    <div class="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-sky-200 transition-colors text-sky-500">
+                        <i class="fa-solid fa-square-parking text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-700 group-hover:text-sky-600 mb-1">停車雷達</h2>
+                        <p class="text-slate-400 text-sm">快速找到停車位</p>
+                    </div>
+                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-sky-400">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 項目 2: 氣象站 -->
+            <a href="https://begin0808.github.io/weather/" target="_blank" class="app-card group block">
+                <!-- 內層負責持續的浮動動畫 (animate-float-slow)，設定不同速度讓畫面更有層次 -->
+                <div class="bg-white rounded-3xl p-6 border-4 border-white shadow-lg h-full flex items-center hover:border-amber-200 transition-colors animate-float-slow">
+                    <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-amber-200 transition-colors text-amber-500">
+                        <i class="fa-solid fa-cloud-sun text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-700 group-hover:text-amber-600 mb-1">氣象站</h2>
+                        <p class="text-slate-400 text-sm">即時掌握天氣變化</p>
+                    </div>
+                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 待開發項目 (佔位符) -->
+            <div class="app-card group block opacity-70">
+                <div class="bg-slate-50 rounded-3xl p-6 border-4 border-dashed border-slate-200 shadow-sm h-full flex items-center justify-center animate-float">
+                    <div class="text-center text-slate-400">
+                        <div class="mb-2">
+                            <i class="fa-solid fa-hammer text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold mb-1">孵化中...</h2>
+                        <p class="text-xs">期待下一個新作品</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 頁尾 -->
+        <footer class="text-center mt-16 text-slate-400 text-sm">
+            <p>© 2025 小企鵝智造實驗室. All rights reserved.</p>
+            <p class="mt-1 text-xs opacity-70">Made with <i class="fa-solid fa-heart text-red-300 mx-1"></i> & 🐟</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
