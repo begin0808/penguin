@@ -76,19 +76,8 @@
     <!-- 主要容器 -->
     <main class="w-full max-w-4xl z-10">
         
-        <!-- 標題區 -->
-        <header class="text-center mb-12 animate-float">
-            <!-- 使用者自訂圖片區塊 -->
-            <!-- 注意：請確保 'icon.png' 檔案與此 html 放在同一個資料夾 -->
-            <div class="w-48 h-48 mx-auto mb-4 relative drop-shadow-xl flex items-center justify-center">
-                <img 
-                    src="icon.png" 
-                    alt="小企鵝" 
-                    class="w-full h-full object-contain"
-                    onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/4149/4149667.png'; this.title='找不到圖片，請確認檔名是否正確';"
-                >
-            </div>
-            
+        <!-- 標題區 (圖片已移除，保持簡潔) -->
+        <header class="text-center mb-16 animate-float">
             <h1 class="text-4xl md:text-5xl font-bold text-sky-600 mb-2 tracking-wide drop-shadow-sm">小企鵝智造實驗室</h1>
             <p class="text-slate-500 text-lg">Penguin Manufacturing Lab</p>
         </header>
@@ -116,7 +105,7 @@
 
             <!-- 項目 2: 氣象站 -->
             <a href="https://begin0808.github.io/weather/" target="_blank" class="app-card group block">
-                <!-- 內層負責持續的浮動動畫 (animate-float-slow)，設定不同速度讓畫面更有層次 -->
+                <!-- 內層負責持續的浮動動畫 (animate-float-slow) -->
                 <div class="bg-white rounded-3xl p-6 border-4 border-white shadow-lg h-full flex items-center hover:border-amber-200 transition-colors animate-float-slow">
                     <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-amber-200 transition-colors text-amber-500">
                         <i class="fa-solid fa-cloud-sun text-3xl"></i>
@@ -131,18 +120,23 @@
                 </div>
             </a>
 
-            <!-- 待開發項目 (佔位符) -->
-            <div class="app-card group block opacity-70">
-                <div class="bg-slate-50 rounded-3xl p-6 border-4 border-dashed border-slate-200 shadow-sm h-full flex items-center justify-center animate-float">
-                    <div class="text-center text-slate-400">
-                        <div class="mb-2">
-                            <i class="fa-solid fa-hammer text-2xl"></i>
-                        </div>
-                        <h2 class="text-xl font-bold mb-1">孵化中...</h2>
-                        <p class="text-xs">期待下一個新作品</p>
+            <!-- 項目 3: 測試頁面 -->
+            <!-- 連結設為 test.html，使用綠色主題與實驗瓶圖示 -->
+            <a href="test.html" class="app-card group block">
+                <div class="bg-white rounded-3xl p-6 border-4 border-white shadow-lg h-full flex items-center hover:border-emerald-200 transition-colors animate-float">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mr-5 shrink-0 group-hover:bg-emerald-200 transition-colors text-emerald-500">
+                        <!-- 使用實驗瓶圖示代表測試功能 -->
+                        <i class="fa-solid fa-flask text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-700 group-hover:text-emerald-600 mb-1">測試頁面</h2>
+                        <p class="text-slate-400 text-sm">新功能測試區</p>
+                    </div>
+                    <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400">
+                        <i class="fa-solid fa-chevron-right"></i>
                     </div>
                 </div>
-            </div>
+            </a>
 
         </div>
 
